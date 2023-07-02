@@ -1,0 +1,17 @@
+version: '3.8'
+name: pdf-converter
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      # Ensure that the variables in .env match the same variables in devcontainer.json
+      - PORT=8083
+      - RUST_LOG=pdf_converter=debug
+    command: sleep infinity
+    volumes:
+      - ../..:/workspaces:cached
+    ports:
+      - '8083:8083'
